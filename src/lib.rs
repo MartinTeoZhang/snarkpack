@@ -5,7 +5,7 @@ mod commitment;
 mod errors;
 mod ip;
 mod pairing_check;
-mod proof;
+pub mod proof;
 mod prover;
 pub mod srs;
 pub mod transcript;

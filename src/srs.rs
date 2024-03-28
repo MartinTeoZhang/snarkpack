@@ -29,7 +29,7 @@ pub const MAX_SRS_SIZE: usize = (2 << 19) + 1;
 /// ,in other words from two distinct Groth16 CRS.
 /// See [there](https://github.com/nikkolasg/taupipp) a way on how to generate
 /// this GenesisSRS.
-#[derive(Clone, Debug)]
+#[derive(CanonicalSerialize, CanonicalDeserialize, Debug, Clone)]
 pub struct GenericSRS<E: Pairing> {
     /// $\{g^a^i\}_{i=0}^{N}$ where N is the smallest size of the two Groth16 CRS.
     pub g_alpha_powers: Vec<E::G1Affine>,
@@ -70,7 +70,7 @@ pub struct ProverSRS<E: Pairing> {
 /// Contains the necessary elements to verify an aggregated Groth16 proof; it is of fixed size
 /// regardless of the number of proofs aggregated. However, a verifier SRS will be determined by
 /// the number of proofs being aggregated.
-#[derive(Clone, Debug)]
+#[derive(CanonicalSerialize, CanonicalDeserialize, Debug, Clone)]
 pub struct VerifierSRS<E: Pairing> {
     pub n: usize,
     pub g: E::G1,
